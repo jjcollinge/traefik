@@ -1,9 +1,8 @@
 # escape=`
 
-FROM microsoft/windowsservercore AS core
-FROM microsoft/nanoserver
+FROM microsoft/windowsservercore
 
-COPY --from=core /windows/system32/netapi32.dll /windows/system32/netapi32.dll
+USER ContainerAdministrator
 
 WORKDIR C:\traefik
 
