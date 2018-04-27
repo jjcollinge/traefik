@@ -1,7 +1,7 @@
 # escape=`
 
-FROM microsoft/windowsservercore:1709 AS core
-FROM microsoft/nanoserver:1709
+FROM microsoft/windowsservercore AS core
+FROM microsoft/nanoserver
 
 COPY --from=core /windows/system32/netapi32.dll /windows/system32/netapi32.dll
 

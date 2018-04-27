@@ -1,3 +1,5 @@
+$ErrorActionPreference = "Stop"
+
 cd c:\gopath\src\github.com\containous\traefik\
 
 # Get go-bindata. Please note, the ellipses are required
