@@ -10,7 +10,7 @@ COPY traefik.exe .
 
 # 'clustermanagementurl' must point to your cluster's public IP
 # or an SF endpoint that is accessible from inside the container.
-COPY traefik.toml .
+COPY traefik.sample.toml traefik.toml
 
 # expose Traefik and it's dashboard.
 EXPOSE 80
