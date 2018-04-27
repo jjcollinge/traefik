@@ -29,12 +29,12 @@ install:
   - docker version
 
 build_script:
-  - ps: .\build.ps1
+  - ps: .\build.ps1 -Verb runAs
 
 deploy_script:
   - docker login -u="$env:DOCKER_USERNAME" -p="$env:DOCKER_PASS"
   - docker push "${env:DOCKER_USERNAME}/${DOCKER_IMAGE}:${env:APPVEYOR_BUILD_ID}"
-  
+
 artifacts:
   - path: out\traefik
     name: binary
