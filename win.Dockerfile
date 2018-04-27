@@ -1,9 +1,6 @@
 # escape=`
 
-FROM microsoft/windowsservercore:ltsc2016 AS core
-FROM microsoft/nanoserver:sac2016
-
-COPY --from=core /windows/system32/netapi32.dll /windows/system32/netapi32.dll
+FROM microsoft/windowsservercore
 
 WORKDIR C:\traefik
 
