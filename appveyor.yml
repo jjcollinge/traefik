@@ -1,10 +1,15 @@
 version: 1.0.0.{build}
+
 image: Visual Studio 2017
+
 platform: x64
+
 branches:
   only:
     - master
+
 clone_folder: c:\gopath\src\github.com\containous\traefik\
+
 environment:
   GOPATH: c:\gopath
   DOCKER_USERNAME:
@@ -12,7 +17,8 @@ environment:
   DOCKER_PASSWORD:
     secure: BvKwqfmKvDxuJq77hWwb6Q==
   DOCKER_IMAGE: traefik-windows
-  NODEJS_VERSION: "6"    
+  NODEJS_VERSION: "6"
+
 install:
   - echo %PATH%
   - echo %GOPATH%
@@ -21,11 +27,14 @@ install:
   - go env
   - npm install -g windows-build-tools
   - docker version
+
 build_script:
   - ps: .\build.ps1
+
 deploy_script:
   - docker login -u="$env:DOCKER_USERNAME" -p="$env:DOCKER_PASS"
   - docker push "${env:DOCKER_USERNAME}/${DOCKER_IMAGE}:${env:APPVEYOR_BUILD_ID}"
+  
 artifacts:
   - path: out\traefik
     name: binary
