@@ -1,0 +1,32 @@
+version: 1.0.0.{build}
+
+platform: x64
+
+branches:
+  only:
+    - master
+
+clone_folder: c:\gopath\src\github.com\containous\traefik\
+
+environment:
+  GOPATH: c:\gopath
+  DOCKER_USERNAME: dotjson
+  DOCKER_PASSWORD:
+    secure: BvKwqfmKvDxuJq77hWwb6Q==
+  DOCKER_REGISTRY: http://hub.docker.com/dotjson/traefik-windows
+  nodejs_version: "6"    
+
+install:
+  - echo %PATH%
+  - echo %GOPATH%
+  - set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
+  - go version
+  - go env
+  - npm install -g windows-build-tools
+
+build_script:
+  - ps: .\build.ps1
+
+artifacts:
+  - path: out\traefik
+    name: binary
